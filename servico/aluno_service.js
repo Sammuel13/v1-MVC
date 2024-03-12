@@ -1,9 +1,12 @@
 class AlunoService {
-    repositorio;
     constructor() {
         this.repositorio = new AlunoRepositorio();
     }
+
     inserir(nome, idade, matricula) {
+        if (idade < 18) {
+            throw new Error('Não permitido menor de idade!');
+        }
         const alunoPesquisado = this.pesquisarPorMatricula(matricula);
         if (alunoPesquisado.length > 0) {
             throw new Error('Aluno já cadastrado!');
@@ -12,13 +15,17 @@ class AlunoService {
         this.repositorio.inserir(alunoNovo);
         return alunoNovo;
     }
+
     pesquisarPorMatricula(matricula) {
-        return this.repositorio.listar().filter(aluno => aluno.matricula === matricula);
+        return this.repositorio.listar().filter(
+            aluno => aluno.matricula === matricula);
     }
+
     remover(matricula) {
         this.repositorio.remover(matricula);
     }
-    listarMenoresIdade() {
-        return this.repositorio.listar().filter(aluno => aluno.idade < 18);
-    }
+
+//     listarMenoresIdade() {
+//         return this.repositorio.listar().filter(aluno => aluno.idade < 18);
+//     }
 }
