@@ -25,8 +25,8 @@ class DisciplinaService {
     }
 
     inserirAlunoNaDisciplina(matricula, codigo) {
-        alunoPesquisado = this.alunoService.pesquisarPorMatricula(matricula);
-        disciplinaPesquisada = this.pesquisarPorCodigo(codigo);
+        const alunoPesquisado = this.alunoService.pesquisarPorMatricula(matricula);
+        const disciplinaPesquisada = this.pesquisarPorCodigo(codigo);
 
         if (alunoPesquisado.length === 0) {
             throw new Error('Aluno inexistente!')
@@ -34,6 +34,10 @@ class DisciplinaService {
 
         if (disciplinaPesquisada.length === 0) {
             throw new Error('Disciplina inexistente!')
+        }
+
+        if (disciplinaPesquisada[0].alunos.some(aluno => aluno.matricula === matricula)) {
+            throw new Error('Aluno já cadastrado na disciplina!');
         }
 
         this.repositorio.inserirAlunoNaDisciplina(alunoPesquisado[0], disciplinaPesquisada[0]);

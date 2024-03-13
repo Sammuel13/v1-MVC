@@ -9,25 +9,46 @@
 
 <body>
 
-    Nome:<input id="nome"><br>
-    Idade:<input id="idade" type="number"><br>
-    Matrícula:<input id="matricula"><br>
+    <div style="display: flex">
+        <div id="acoesAlunos" style="flex: 1">
+            <h2>Alunos</h2>
+            Nome:<input id="nome"><br>
+            Idade:<input id="idade" type="number"><br>
+            Matrícula:<input id="matricula"><br>
+            <button onclick="alunoControlador.inserir()">Cadastrar</button>
+            <ol id="listaAlunos"></ol>
+        </div>
 
-    <button onclick="alunoControlador.inserir()">Cadastrar</button>
-    <button onclick="alunoControlador.listarAlunosMenoresIdade()">Mostrar Menores</button>
+        <div id="acoesDisciplinas" style="flex: 1">
+            <h2>Disciplinas</h2>
+            Código:<input id="codigo"><br>
+            Nome:<input id="nomeDisciplina"><br>
+            <button onclick="disciplinaControlador.inserir()">Cadastrar</button>
+            <ol id="listaDisciplinas"></ol>
+        </div>
 
-    <ol id="listaAlunos">
+        <div id="inserirAlunoDisciplina" style="flex: 1">
+            <h2>Inserir Aluno na Disciplina</h2>
+            Código da Disciplina:<input id="alunoDisciplinaCodigo"><br>
+            Matricula do Aluno:<input id="alunoDisciplinaMatricula"><br>
+            <button onclick="disciplinaControlador.inserirAluno()">Inserir</button>
+        </div>
 
-    </ol>
-
-    <ul id="listaAlunosMenores">
-    </ul>
-
+        <div id="listarAlunosDisciplina" style="flex: 1">
+            <h2>Listar Alunos da Disciplina</h2>
+            Código da Disciplina:<input id="ListarAlunoDisciplinaCodigo"><br>
+            <button onclick="disciplinaControlador.listarAlunos()">Listar</button>
+            <ol id="listaAlunosDisciplina"></ol>
+    </div>
     
     <script src="modelo/aluno.js"></script>
     <script src="repositorio/aluno_repositorio.js"></script>
     <script src="servico/aluno_service.js"></script>
     <script src="controlador/aluno_controlador.js"></script>
+    <script src="modelo/disciplina.js"></script>
+    <script src="repositorio/disciplina_repositorio.js"></script>
+    <script src="servico/disciplina_service.js"></script>
+    <script src="controlador/disciplina_controlador.js"></script>
     <script src="script.js"></script>
 
 </body>

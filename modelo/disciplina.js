@@ -1,33 +1,31 @@
 class Disciplina {
-
     constructor(codigo, nome) {
-        this.codigo = codigo;
-        this.nome = nome;
-        this.alunos = [];
+        this._codigo = codigo;
+        this._nome = nome;
+        this._alunos = [];
     }
 
     get nome() {
-        return this.nome;
+        return this._nome;
     }
 
     set nome(novoNome){
-        this.nome = novoNome;
+        this._nome = novoNome;
     }
 
     get alunos() {
-        return this.alunos;
+        return this._alunos;
     }
 
     get codigo() {
-        return this.codigo;
+        return this._codigo;
     }
 
-    set codigo(cod) {
-        this.codigo = cod;
+    set codigo(novoCodigo){
+        this._codigo = novoCodigo;
     }
 
     inserirAluno(aluno) {
-        this.alunos.push(aluno);
+        this._alunos.push(aluno);
     }
-
 }
